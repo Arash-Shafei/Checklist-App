@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useMemo } from "react";
 import {
   Table,
@@ -15,6 +15,7 @@ import {
 
 function ChecklistLogPage() {
   let { name } = useParams();
+  let navigate = useNavigate();
 
   const demo_logs = [
     {
@@ -99,6 +100,11 @@ function ChecklistLogPage() {
   return (
     <>
       <h1>Here you will see the checklist logs for {name}</h1>
+
+      <Button onClick={() => navigate(-1)}>Back</Button>
+
+      <br />
+      <br />
       <Select value={authorFilter} onChange={handleAuthorChange} displayEmpty>
         <MenuItem value="">All Authors</MenuItem>
         {allAuthors.map((author) => (
@@ -118,14 +124,22 @@ function ChecklistLogPage() {
       <Button onClick={clearFilters} variant="outlined">
         Clear Filters
       </Button>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
+      <TableContainer component={Paper} style={{ marginTop: "30px" }}>
+        <Table border={1}>
+          <TableHead style={{ backgroundColor: "#D5D5D5" }}>
             <TableRow>
-              <TableCell>Date</TableCell>
-              <TableCell>Author</TableCell>
-              <TableCell>Change Type</TableCell>
-              <TableCell>Description</TableCell>
+              <TableCell>
+                <strong>Date</strong>
+              </TableCell>
+              <TableCell>
+                <strong>Author</strong>
+              </TableCell>
+              <TableCell>
+                <strong>Change Type</strong>
+              </TableCell>
+              <TableCell>
+                <strong>Description</strong>
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

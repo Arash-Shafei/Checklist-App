@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 
 import {
@@ -14,6 +14,8 @@ import {
 
 function AllChecklists() {
   let { id } = useParams();
+  let navigate = useNavigate();
+
   const demo_checklists = [
     {
       id: 1,
@@ -63,18 +65,16 @@ function AllChecklists() {
   return (
     <>
       <h1>Here you will see the all of the individual checklists for {id}</h1>
-      <Link to="/project/1">
-        <Button>Go Back</Button>
-      </Link>
+      <Button onClick={() => navigate(-1)}>Back</Button>
       <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
+        <Table border={1}>
+          <TableHead style={{ backgroundColor: "#D5D5D5" }}>
             <TableRow>
               <TableCell onClick={() => sortChecklists("name")}>
-                Project Name
+                <strong>Project Name</strong>
               </TableCell>
               <TableCell onClick={() => sortChecklists("completion")}>
-                Completion Percentage
+                <strong>Completion Percentage</strong>
               </TableCell>
               <TableCell></TableCell>
             </TableRow>

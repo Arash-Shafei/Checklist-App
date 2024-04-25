@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import {
   Table,
   TableBody,
@@ -7,10 +7,12 @@ import {
   TableHead,
   TableRow,
   Paper,
+  Button,
 } from "@mui/material";
 
 function TemplateManagementPage() {
   let { id } = useParams();
+  let navigate = useNavigate();
 
   const groups_PL = [
     { id: "PKO", name: "PKO" },
@@ -37,12 +39,15 @@ function TemplateManagementPage() {
   return (
     <>
       <h1>Here you can manage the template for project {id}</h1>
-
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
+      <br />
+      <Button onClick={() => navigate(-1)}>Back</Button>
+      <TableContainer component={Paper} style={{ marginTop: "0px" }}>
+        <Table border={1}>
+          <TableHead style={{ backgroundColor: "#D5D5D5" }}>
             <TableRow>
-              <TableCell>Project Level</TableCell>
+              <TableCell>
+                <strong>Project Level</strong>
+              </TableCell>
               <TableCell></TableCell>
               <TableCell></TableCell>
               <TableCell></TableCell>
@@ -77,11 +82,14 @@ function TemplateManagementPage() {
         </Table>
       </TableContainer>
       <br />
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
+      <TableContainer component={Paper} style={{ marginTop: "30px" }}>
+        <Table border={1}>
+          <TableHead style={{ backgroundColor: "#D5D5D5" }}>
             <TableRow>
-              <TableCell>Block Level</TableCell>
+              <TableCell>
+                <strong>Block Level</strong>
+              </TableCell>
+              <TableCell></TableCell>
               <TableCell></TableCell>
               <TableCell></TableCell>
             </TableRow>

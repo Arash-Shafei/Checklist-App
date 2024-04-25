@@ -37,14 +37,22 @@ function ProjectPage() {
   return (
     <>
       <h1>Project_Name</h1>
+      <br />
       <Link to="/create-project">
         <Button>Edit Project (This only appears for admins)</Button>
       </Link>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
+      <br />
+      <br />
+      <Link to="/">
+        <Button>Go Back</Button>
+      </Link>
+      <TableContainer component={Paper} style={{ marginTop: "30px" }}>
+        <Table border={1}>
+          <TableHead style={{ backgroundColor: "#D5D5D5" }}>
             <TableRow>
-              <TableCell>Project Level</TableCell>
+              <TableCell>
+                <strong>Project Level</strong>
+              </TableCell>
               <TableCell></TableCell>
               <TableCell></TableCell>
             </TableRow>
@@ -74,12 +82,13 @@ function ProjectPage() {
           </TableBody>
         </Table>
       </TableContainer>
-      <br />
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
+      <TableContainer component={Paper} style={{ marginTop: "30px" }}>
+        <Table border={1}>
+          <TableHead style={{ backgroundColor: "#D5D5D5" }}>
             <TableRow>
-              <TableCell>Block Level</TableCell>
+              <TableCell>
+                <strong>Block Level</strong>
+              </TableCell>
               <TableCell></TableCell>
               <TableCell></TableCell>
               <TableCell></TableCell>

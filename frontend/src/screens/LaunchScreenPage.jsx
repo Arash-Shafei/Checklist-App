@@ -144,6 +144,7 @@ function LaunchScreen() {
         </Button>
       </Link>
       <br />
+      <br />
       <Select value={typeFilter} onChange={handleTypeChange} displayEmpty>
         <MenuItem value="">All Types</MenuItem>
         {projectTypes.map((type) => (
@@ -160,24 +161,48 @@ function LaunchScreen() {
       <Button onClick={clearFilters} variant="outlined">
         Clear Filters
       </Button>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
+      <TableContainer component={Paper} style={{ marginTop: "30px" }}>
+        <Table border={1}>
+          <TableHead style={{ backgroundColor: "#D5D5D5" }}>
             <TableRow>
               <TableCell onClick={() => sortProjects("name")}>
-                Project Name
+                <strong>Project Name</strong>{" "}
+                {sortConfig.key === "name" &&
+                  (sortConfig.direction === "ascending" ? "↑" : "↓")}
+                {
+                  sortConfig.key !== "name" && "⇅" // Double-headed arrow as default
+                }
               </TableCell>
               <TableCell onClick={() => sortProjects("type")}>
-                Project Type
+                <strong>Project Type</strong>{" "}
+                {sortConfig.key === "type" &&
+                  (sortConfig.direction === "ascending" ? "↑" : "↓")}
+                {
+                  sortConfig.key !== "type" && "⇅" // Double-headed arrow as default
+                }
               </TableCell>
               <TableCell onClick={() => sortProjects("creationDate")}>
-                Creation Date
+                <strong>Creation Date</strong>{" "}
+                {sortConfig.key === "creationDate" &&
+                  (sortConfig.direction === "ascending" ? "↑" : "↓")}
+                {
+                  sortConfig.key !== "creationDate" && "⇅" // Double-headed arrow as default
+                }
               </TableCell>
-              <TableCell>Number of Line Items</TableCell>
+              <TableCell>
+                <strong>Number of Line Items</strong>
+              </TableCell>
               <TableCell onClick={() => sortProjects("completion")}>
-                Completion Percentage
+                <strong>Completion Percentage</strong>{" "}
+                {sortConfig.key === "completion" &&
+                  (sortConfig.direction === "ascending" ? "↑" : "↓")}
+                {
+                  sortConfig.key !== "completion" && "⇅" // Double-headed arrow as default
+                }
               </TableCell>
-              <TableCell>Completion Status</TableCell>
+              <TableCell>
+                <strong>Completion Status</strong>
+              </TableCell>
               <TableCell></TableCell>
             </TableRow>
           </TableHead>

@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useMemo } from "react";
 import {
   Table,
@@ -12,10 +12,10 @@ import {
   MenuItem,
   Button,
 } from "@mui/material";
-import { Link } from "react-router-dom";
 
 function TemplateLog() {
   let { id } = useParams();
+  let navigate = useNavigate();
 
   const demo_logs = [
     {
@@ -100,6 +100,8 @@ function TemplateLog() {
   return (
     <>
       <h1>Here you will see the template logs for {id}</h1>
+      <Button onClick={() => navigate(-1)}>Back</Button>
+      <br />
       <Select value={authorFilter} onChange={handleAuthorChange} displayEmpty>
         <MenuItem value="">All Authors</MenuItem>
         {allAuthors.map((author) => (
@@ -119,14 +121,22 @@ function TemplateLog() {
       <Button onClick={clearFilters} variant="outlined">
         Clear Filters
       </Button>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
+      <TableContainer component={Paper} style={{ marginTop: "20px" }}>
+        <Table border={1}>
+          <TableHead style={{ backgroundColor: "#D5D5D5" }}>
             <TableRow>
-              <TableCell>Date</TableCell>
-              <TableCell>Author</TableCell>
-              <TableCell>Change Type</TableCell>
-              <TableCell>Description</TableCell>
+              <TableCell>
+                <strong>Date</strong>
+              </TableCell>
+              <TableCell>
+                <strong>Author</strong>
+              </TableCell>
+              <TableCell>
+                <strong>Change Type</strong>
+              </TableCell>
+              <TableCell>
+                <strong>Description</strong>
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
